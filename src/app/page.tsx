@@ -12,16 +12,13 @@ export default async function Home() {
     void api.post.getLatest.prefetch();
   }
 
-  const clients = [
-    { name: "Liam", age: 34, gender: "Male", hobby: "Photography" },
-    { name: "Olivia", age: 28, gender: "Female", hobby: "Hiking" },
-    { name: "James", age: 41, gender: "Male", hobby: "Cooking" },
-    { name: "Emma", age: 25, gender: "Female", hobby: "Painting" },
-    { name: "Oliver", age: 37, gender: "Male", hobby: "Cycling" },
-    { name: "Ava", age: 31, gender: "Female", hobby: "Gardening" },
-    { name: "Benjamin", age: 29, gender: "Male", hobby: "Reading" },
-    { name: "Sophia", age: 36, gender: "Female", hobby: "Traveling" },
-  ];
+  const clients: Array<{
+    id: number;
+    name: string;
+    age: number;
+    gender: string;
+    hobby: string;
+  }> = await api.client.getAll();
 
   return (
     <HydrateClient>
