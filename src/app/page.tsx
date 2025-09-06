@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { LatestPost } from "~/app/_components/post";
+import { ClientCard } from "~/app/_components/client-card";
 import { auth } from "~/server/auth";
 import { api, HydrateClient } from "~/trpc/server";
 
@@ -12,16 +13,13 @@ export default async function Home() {
     void api.post.getLatest.prefetch();
   }
 
-  const clients = [
-    { name: "Liam", age: 34, gender: "Male", hobby: "Photography" },
-    { name: "Olivia", age: 28, gender: "Female", hobby: "Hiking" },
-    { name: "James", age: 41, gender: "Male", hobby: "Cooking" },
-    { name: "Emma", age: 25, gender: "Female", hobby: "Painting" },
-    { name: "Oliver", age: 37, gender: "Male", hobby: "Cycling" },
-    { name: "Ava", age: 31, gender: "Female", hobby: "Gardening" },
-    { name: "Benjamin", age: 29, gender: "Male", hobby: "Reading" },
-    { name: "Sophia", age: 36, gender: "Female", hobby: "Traveling" },
-  ];
+  const clients: Array<{
+    id: number;
+    name: string;
+    age: number;
+    gender: string;
+    hobby: string;
+  }> = await api.client.getAll();
 
   return (
     <HydrateClient>
@@ -32,15 +30,7 @@ export default async function Home() {
           </h1>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8 lg:grid-cols-4 lg:grid-rows-2">
             {clients.map((client, idx) => (
-              <div
-                key={idx}
-                className="flex max-w-xs flex-col gap-2 rounded-xl border border-green-700 bg-green-400/80 p-4 text-gray-900 shadow-lg"
-              >
-                <h3 className="text-2xl font-bold">{client.name}</h3>
-                <div className="text-sm">Age: {client.age}</div>
-                <div className="text-sm">Gender: {client.gender}</div>
-                <div className="text-sm">Hobby: {client.hobby}</div>
-              </div>
+              <ClientCard key={client.id} client={client} />
             ))}
           </div>
           <div className="flex flex-col items-center gap-2">
