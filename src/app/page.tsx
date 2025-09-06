@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { LatestPost } from "~/app/_components/post";
+import { ClientCard } from "~/app/_components/client-card";
 import { auth } from "~/server/auth";
 import { api, HydrateClient } from "~/trpc/server";
 
@@ -29,21 +30,7 @@ export default async function Home() {
           </h1>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8 lg:grid-cols-4 lg:grid-rows-2">
             {clients.map((client, idx) => (
-              <div
-                key={idx}
-                className="flex max-w-xs flex-col gap-2 rounded-xl border border-green-700 bg-green-400/80 p-4 text-gray-900 shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-2xl"
-              >
-                <h3 className="text-2xl font-bold">{client.name}</h3>
-                <div className="text-sm">Age: {client.age}</div>
-                <div className="text-sm">Gender: {client.gender}</div>
-                <div className="text-sm">Hobby: {client.hobby}</div>
-                <a
-                  href="#"
-                  className="mt-4 self-end text-sm text-red-600 underline hover:text-red-800"
-                >
-                  Delete
-                </a>
-              </div>
+              <ClientCard key={client.id} client={client} />
             ))}
           </div>
           <div className="flex flex-col items-center gap-2">
