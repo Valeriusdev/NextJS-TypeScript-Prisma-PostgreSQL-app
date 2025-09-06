@@ -31,7 +31,7 @@ export default async function Home() {
             {clients.map((client, idx) => (
               <div
                 key={idx}
-                className="flex max-w-xs flex-col gap-2 rounded-xl border border-green-700 bg-green-400/80 p-4 text-gray-900 shadow-lg"
+                className="flex max-w-xs flex-col gap-2 rounded-xl border border-green-700 bg-green-400/80 p-4 text-gray-900 shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-2xl"
               >
                 <h3 className="text-2xl font-bold">{client.name}</h3>
                 <div className="text-sm">Age: {client.age}</div>
