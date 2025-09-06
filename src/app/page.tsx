@@ -37,6 +37,12 @@ export default async function Home() {
                 <div className="text-sm">Age: {client.age}</div>
                 <div className="text-sm">Gender: {client.gender}</div>
                 <div className="text-sm">Hobby: {client.hobby}</div>
+                <a
+                  href="#"
+                  className="mt-4 self-end text-sm text-red-600 underline hover:text-red-800"
+                >
+                  Delete
+                </a>
               </div>
             ))}
           </div>
