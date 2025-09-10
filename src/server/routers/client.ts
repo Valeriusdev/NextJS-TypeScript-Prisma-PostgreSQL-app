@@ -6,9 +6,18 @@ export const clientRouter = createTRPCRouter({
   getAll: publicProcedure.query(async () => {
     return db.client.findMany();
   }),
-  create: publicProcedure.mutation(async ({ input }) => {
-    return db.client.create({ data: input });
-  }),
+  create: publicProcedure
+    .input(
+      z.object({
+        name: z.string(),
+        age: z.number(),
+        gender: z.string(),
+        hobby: z.string(),
+      }),
+    )
+    .mutation(async ({ input }) => {
+      return db.client.create({ data: input });
+    }),
   delete: publicProcedure
     .input(z.object({ id: z.number() }))
     .mutation(async ({ input }) => {
