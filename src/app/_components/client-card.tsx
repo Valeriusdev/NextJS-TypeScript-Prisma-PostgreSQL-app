@@ -1,5 +1,7 @@
 "use client";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { api } from "~/trpc/react";
 import { useRouter } from "next/navigation";
 
@@ -38,9 +40,14 @@ export function ClientCard({ client }: ClientCardProps) {
       <button
         onClick={handleDelete}
         disabled={deleteClient.isPending}
-        className="mt-4 self-end text-sm text-red-600 underline hover:text-red-800 disabled:opacity-50"
+        className="mt-4 self-end text-red-500 hover:text-red-600 disabled:opacity-50"
+        title="Delete"
       >
-        {deleteClient.isPending ? "Deleting..." : "Delete"}
+        {deleteClient.isPending ? (
+          <span className="text-sm">Deleting...</span>
+        ) : (
+          <FontAwesomeIcon icon={faTrash} size="lg" />
+        )}
       </button>
     </div>
   );
