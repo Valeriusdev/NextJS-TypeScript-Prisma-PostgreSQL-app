@@ -44,7 +44,7 @@ export function ClientCard({ client }: ClientCardProps) {
         title="Delete"
       >
         {deleteClient.isPending ? (
-          <span className="text-sm">Deleting...</span>
+          <span className="text-sm text-red-600">Deleting...</span>
         ) : (
           <FontAwesomeIcon icon={faTrash} size="lg" />
         )}
