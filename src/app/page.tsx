@@ -2,6 +2,8 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 // import { LatestPost } from "~/app/_components/post";
 import { ClientCard } from "~/app/_components/client-card";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { auth } from "~/server/auth";
 import { api, HydrateClient } from "~/trpc/server";
 
@@ -57,6 +59,9 @@ export default async function Home() {
             {clients.map((client, idx) => (
               <ClientCard key={client.id} client={client} />
             ))}
+            <div className="flex max-w-xs flex-col items-center justify-center gap-2 rounded-xl border border-gray-400 bg-gray-200/20 p-4 text-white shadow-lg">
+              <FontAwesomeIcon icon={faPlus} size="3x" />
+            </div>
           </div>
           {/* {session?.user && <LatestPost />} */}
         </div>
