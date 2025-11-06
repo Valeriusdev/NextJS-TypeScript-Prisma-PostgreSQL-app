@@ -33,7 +33,7 @@ export function ClientCard({ client }: ClientCardProps) {
 
   return (
     <div className="flex max-w-xs flex-col gap-2 rounded-xl border border-green-700 bg-green-400/80 p-4 text-gray-900 shadow-lg transition-transform duration-300 hover:-translate-y-4 hover:scale-110 hover:shadow-2xl">
-      <h3 className="text-2xl font-bold">{client.name}</h3>
+      <h3 className="text-xl font-bold">{client.name}</h3>
       <div className="text-sm">Age: {client.age}</div>
       <div className="text-sm">Gender: {client.gender}</div>
       <div className="text-sm">Hobby: {client.hobby}</div>
